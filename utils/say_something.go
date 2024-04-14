@@ -9,15 +9,23 @@ type User struct {
 	Name, Address string
 }
 
-func SaySomething(name string) string {
+func SaySomething(user User) string {
 	os, _ := os.Hostname()
-	user := User{name, os}
-	res := fmt.Sprintf("Hi %s, you logged from %s\n", user.Name, user.Address)
+	newUser := User{user.Name, user.Address}
+	res := fmt.Sprintf("Hi %s, you logged from %s\nYour host is %s", newUser.Name, newUser.Address, os)
 	return res
 }
 
 /*
-To release the original module:
+To release/update the original module:
 git tag v1.0.0
 git push origin v1.0.0
+
+If you want to make major changes:
+Change the module's name
+for ex: module github.com/maulanakbr/go-test-module/v2
+
+Notes:
+Always update the tag when changes are made
+for ex: v1.1.1
 */
